@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Rooms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        .rooms {
+            padding: 40px;
+            background: #f4f4f4;
+        }
+
+        .rooms h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        .room-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .room {
+            width: 30%;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .room img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <section class="rooms">
+        <h2>Available Rooms</h2>
+        <div class="room-grid">
+            <div class="room">
+                <img src="https://images.pexels.com/photos/3209053/pexels-photo-3209053.jpeg?" alt="Deluxe Room">
+                <h3>Deluxe Room</h3>
+                <p>From ₹200/night</p>
+                <form action="payment.html" method="GET">
+                    <input type="hidden" name="room" value="Deluxe Room">
+                    <button type="submit">Book This Room</button>
+                </form>
+            </div>
+            <div class="room">
+                <img src="https://images.pexels.com/photos/11448497/pexels-photo-11448497.jpeg?" alt="Family Room">
+                <h3>Family Room</h3>
+                <p>From ₹300/night</p>
+                <form action="payment.html" method="GET">
+                    <input type="hidden" name="room" value="Family Room">
+                    <button type="submit">Book This Room</button>
+                </form>
+            </div>
+            <div class="room">
+                <img src="https://images.pexels.com/photos/3209055/pexels-photo-3209055.jpeg?" alt="Single Room">
+                <h3>Single Room</h3>
+                <p>From ₹150/night</p>
+                <form action="payment.html" method="GET">
+                    <input type="hidden" name="room" value="Single Room">
+                    <button type="submit">Book This Room</button>
+                </form>
+            </div>
+            <div class="room">
+                <img src="https://images.pexels.com/photos/1591361/pexels-photo-1591361.jpeg?" alt="Double Room">
+                <h3>Double Room</h3>
+                <p>From ₹250/night</p>
+                <form action="payment.html" method="GET">
+                    <input type="hidden" name="room" value="Double Room">
+                    <button type="submit">Book This Room</button>
+                </form>
+            </div>
+            <div class="room">
+                <img src="https://images.pexels.com/photos/6454837/pexels-photo-6454837.jpeg?" alt="Presidential Suite">
+                <h3>Presidential Suite</h3>
+                <p>From ₹500/night</p>
+                <form action="payment.html" method="GET">
+                    <input type="hidden" name="room" value="Presidential Suite">
+                    <button type="submit">Book This Room</button>
+                </form>
+            </div>
+            <div class="room">
+                <img src="https://images.pexels.com/photos/67555/water-summer-resort-sunbed-67555.jpeg?" alt="Luxury Room">
+                <h3>Luxury Room</h3>
+                <p>From ₹400/night</p>
+                <form action="payment.html" method="GET">
+                    <input type="hidden" name="room" value="Luxury Room">
+                    <button type="submit">Book This Room</button>
+                </form>
+            </div>
+            <div class="room">
+                <img src="https://images.pexels.com/photos/751268/pexels-photo-751268.jpeg?" alt="Economy Room">
+                <h3>Economy Room</h3>
+                <p>From ₹100/night</p>
+                <form action="payment.html" method="GET">
+                    <input type="hidden" name="room" value="Economy Room">
+                    <button type="submit">Book This Room</button>
+                </form>
+            </div>
+            <div class="room">
+                <img src="https://images.pexels.com/photos/751266/pexels-photo-751266.jpeg?" alt="Royal Suite">
+                <h3>Royal Suite</h3>
+                <p>From ₹600/night</p>
+                <form action="payment.html" method="GET">
+                    <input type="hidden" name="room" value="Royal Suite">
+                    <button type="submit">Book This Room</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

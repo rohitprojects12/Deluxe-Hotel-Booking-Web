@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #ffffff;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .notification {
+            background: #28a745;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin: 20px 0;
+            display: none; /* Hide by default */
+        }
+
+        .details {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Payment Page</h1>
+
+    <div class="notification" id="notification">
+        Your payment has been successfully processed!
+    </div>
+
+    <form id="payment-form">
+        <label for="card-number">Card Number</label>
+        <input type="text" id="card-number" name="card-number" required>
+
+        <label for="card-name">Name on Card</label>
+        <input type="text" id="card-name" name="card-name" required>
+
+        <label for="expiry-date">Expiry Date</label>
+        <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+
+        <label for="cvv">CVV</label>
+        <input type="text" id="cvv" name="cvv" required>
+
+        <input type="hidden" name="room" value="">
+        <button type="submit">Confirm Payment</button>
+    </form>
+
+    <div class="details" id="details" style="display:none;">
+        <p>Thank you for booking with us!</p>
+        <p>Your booking details:</p>
+        <p id="room-details"></p>
+    </div>
+
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const room = urlParams.get('room');
+        document.querySelector('input[name="room"]').value = room; // Set the room value in hidden input
+
+        // Handle form submission
+        document.getElementById('payment-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Simulate payment processing
+            setTimeout(() => {
+                // Show notification and booking details
+                document.getElementById('notification').style.display = 'block';
+                document.getElementById('details').style.display = 'block';
+                document.getElementById('room-details').innerText = `You have booked: ${room}`;
+                // Clear the form
+                this.reset();
+            }, 1000); // Simulated delay for payment processing
+        });
+    </script>
+</body>
+</html>

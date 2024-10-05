@@ -1,1 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Hotel Booking</title>
+    <style>
+        /* Reset and Basic Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #ffffff; /* White Background */
+            color: #333; /* Dark text color for readability */
+        }
+
+        header {
+            background: #4A90E2; /* Blue */
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: relative; /* Added for absolute positioning of header image */
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        header img {
+            width: 100%; /* Makes the header image responsive */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn {
+            background: #28a745; /* Green */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #218838; /* Darker Green */
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 80vh;
+            background: url('images/hero-bg.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        .booking-form input,
+        .booking-form select {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc; /* Light border */
+            border-radius: 4px; /* Rounded corners */
+        }
+
+        /* Room Details Section */
+        .rooms {
+            padding: 40px;
+            background: #f4f4f4;
+        }
+
+        .rooms h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        .room-grid {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .room {
+            width: 30%;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 1px solid #e0e0e0; /* Light border for room cards */
+        }
+
+        .room img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px; /* Rounded corners for images */
+        }
+
+        /* Footer */
+        footer {
+            background: #4A90E2; /* Blue */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Wrap for smaller screens */
+        }
+
+        .footer-slide img {
+            width: 100px;
+            height: 100px;
+            margin: 0 5px;
+        }
+
+        .newsletter input {
+            padding: 10px;
+            border: 1px solid #ccc; /* Light border */
+            border-radius: 4px; /* Rounded corners */
+        }
+    </style>
+    <script>
+        // Handle form validation and redirection to available rooms
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('.booking-form');
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const checkin = document.querySelector('input[name="checkin"]').value;
+                const checkout = document.querySelector('input[name="checkout"]').value;
+                const guests = document.querySelector('select[name="guests"]').value;
+
+                if (!checkin || !checkout || !guests) {
+                    alert('Please fill out all fields.');
+                    return;
+                }
+
+                // Redirect to the available_rooms.html with query parameters
+                window.location.href = `available_rooms.html?checkin=${checkin}&checkout=${checkout}&guests=${guests}`;
+            });
+        });
+
+        // Slideshow for footer images
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.footer-slide img');
+
+        function showSlides() {
+            slides.forEach(slide => slide.style.display = 'none');
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = 'block';
+            setTimeout(showSlides, 3000);
+        }
+
+        document.addEventListener('DOMContentLoaded', showSlides);
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Hotel Deluxe</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Rooms</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#" class="btn">Book Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>Welcome to Hotel Deluxe</h1>
+            <p>Experience luxury at its finest.</p>
+            <!-- Booking Form in Hero Section -->
+            <form class="booking-form">
+                <input type="date" name="checkin" placeholder="Check-in Date" required>
+                <input type="date" name="checkout" placeholder="Check-out Date" required>
+                <select name="guests" required>
+                    <option value="" disabled selected>No. of Guests</option>
+                    <option value="1">1 Guest</option>
+                    <option value="2">2 Guests</option>
+                    <option value="3">3 Guests</option>
+                </select>
+                <button type="submit" class="btn">Check Availability</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Room Details Section -->
+    <section class="rooms">
+        <h2>Our Rooms</h2>
+        <div class="room-grid">
+            <div class="room">
+                <img src="https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?" alt="Deluxe Room">
+                <h3>Deluxe Room</h3>
+                <p>From ₹200/night</p>
+                <button class="btn" style="margin-top: 10px;">Book This Room</button> <!-- Added margin -->
+            </div>
+            <div class="room">
+                <img src="https://images.pexels.com/photos/261411/pexels-photo-261411.jpeg?" alt="Suite Room">
+                <h3>Suite Room</h3>
+                <p>From ₹350/night</p>
+                <button class="btn" style="margin-top: 10px;">Book This Room</button> <!-- Added margin -->
+            </div>
+            <div class="room">
+                <img src="https://images.pexels.com/photos/11448497/pexels-photo-11448497.jpeg?" alt="Family Room">
+                <h3>Family Room</h3>
+                <p>From ₹300/night</p>
+                <button class="btn" style="margin-top: 10px;">Book This Room</button> <!-- Added margin -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-slide">
+                <img src="https://images.pexels.com/photos/751266/pexels-photo-751266.jpeg?"" alt="Testimonial 1">
+                <img src="https://images.pexels.com/photos/67555/water-summer-resort-sunbed-67555.jpeg?" alt="Testimonial 2">
+                <img src="https://images.pexels.com/photos/3209055/pexels-photo-3209055.jpeg?" alt="Testimonial 3">
+                <img src="https://images.pexels.com/photos/11448497/pexels-photo-11448497.jpeg" alt="Testimonial 4">
+            </div>
+            <div class="newsletter">
+                <h3>Subscribe for Updates</h3>
+                <form>
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <p>&copy; 2024 Hotel Deluxe. All rights reserved.</p>
+    </footer>
+</body>
+</html>
